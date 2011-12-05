@@ -10,28 +10,34 @@
   </head>
   
   <states>
-    <default id="Base" color="#000" background-color="#fff" font-weight="normal" font-style="normal">
+    <default id="Base" color="#333" background-color="#fff" font-weight="normal" font-style="normal">
 
       <!-- Get comments and strings from the CSS mode -->
       <state-link state="AutodocComment" mode="CSS" />
       <state-link state="SingleString" mode="CSS" />
-
-      <state id="CommentHeading" color="#333" font-weight="bold" font-style="normal">
-        <begin><regex>^[ \t]?(?:\*|\/\/)?[ \t]*#</regex></begin>
-        <end><regex>[\r\n]</regex></end>
-      </state>
       
       <state id="CSSComment" type="comment" color="#737373" font-weight="normal" font-style="normal">
         <begin><regex>/\*</regex></begin>
         <end><regex>\*/</regex></end>
-        <state-link state="CommentHeading" mode="SCSS" />
+        
+        <!-- Highlight ad-hoc comment headings. Not part of any standard -->
+        <keywords id="CSSCommentHeadings" color="#222" font-weight="bold">
+          <regex>(# .*)([\r\n]|\*/)</regex>
+        </keywords>
       </state>
       
       <state id="SassComment" type="comment" color="#737373" font-weight="normal" font-style="normal">
         <begin><regex>//</regex></begin>
         <end><regex>[\n\r]</regex></end>
-        <state-link state="CommentHeading" mode="SCSS" />
         
+        <!-- Highlight ad-hoc comment headings. Not part of any standard -->
+        <keywords id="SassCommentHeadings" color="#222" font-weight="bold" font-style="normal">
+          <regex>(# .*)[\r\n]</regex>
+        </keywords>
+        
+        <!-- Highlight ad-hoc comment tags.
+             Inspired by PHPDoc, but not all PHPDoc tags are supported.
+             -->
         <keywords id="SassCommentTags" color="#b23200" font-weight="bold" font-style="normal">
           <string>@todo</string>
         </keywords>
@@ -443,7 +449,7 @@
         <regex>(?:\s+)(?i)(outside)</regex>
         <regex>(?:\s+)(?i)(overline)</regex>
         <regex>(?:\s+)(?i)(portrait)</regex>
-        <regex>(?:\s+)(?i)(pre)</regex>
+        <regex>(?:\s+)(?i)(pre)(?:\s*|;)</regex>
         <regex>(?:\s+)(?i)(relative)</regex>
         <regex>(?:\s+)(?i)(rtl)</regex>
         <regex>(?:\s+)(?i)(scroll)</regex>
@@ -694,7 +700,7 @@
         
         <!-- Mixin Directives -->
         <string>@mixin</string>
-        <regex>@include</regex>
+        <string>@include</string>
         
         <!-- Function Directives -->
         <string>@function</string>

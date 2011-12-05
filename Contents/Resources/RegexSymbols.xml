@@ -8,7 +8,7 @@
 </symbol>
 
 <symbol id="Import" font-weight="normal" font-style="normal" image="Symbol-Import" indentation="0" ignoreblocks="no" show-in-comments="yes">
-	<regex>(\@import)</regex>
+	<regex>\@import [\"\'](.*)[\"\']</regex>
 </symbol>
 
 </symbols>

@@ -16,34 +16,34 @@
       <state-link state="AutodocComment" mode="CSS" />
       <state-link state="SingleString" mode="CSS" />
       
-      <state id="CSSComment" type="comment" color="#737373" font-weight="normal" font-style="normal">
+      <state id="CSS Comments" type="comment" color="#737373" font-weight="normal" font-style="normal">
         <begin><regex>/\*</regex></begin>
         <end><regex>\*/</regex></end>
         
         <!-- Highlight ad-hoc comment headings. Not part of any standard -->
-        <keywords id="CSSCommentHeadings" color="#000" font-weight="bold">
-          <regex>(# .*)([\r\n]|\*/)</regex>
+        <keywords id="CSS Comment Headings" color="#222" font-weight="bold">
+          <regex>(#{1,6} .*)([\r\n]|\*/)</regex>
         </keywords>
       </state>
       
-      <state id="SassComment" type="comment" color="#737373" font-weight="normal" font-style="normal">
+      <state id="Sass Comments" type="comment" color="#737373" font-weight="normal" font-style="normal">
         <begin><regex>//</regex></begin>
         <end><regex>[\n\r]</regex></end>
         
         <!-- Highlight ad-hoc comment headings. Not part of any standard -->
-        <keywords id="SassCommentHeadings" color="#000" font-weight="bold" font-style="normal">
-          <regex>(# .*)[\r\n]</regex>
+        <keywords id="Sass Comment Headings" color="#222" font-weight="bold" font-style="normal">
+          <regex>(#{1,6} .*)[\r\n]</regex>
         </keywords>
         
         <!-- Highlight ad-hoc comment tags.
              Inspired by PHPDoc, but not all PHPDoc tags are supported.
              -->
-        <keywords id="SassCommentFlags" color="#b23200" font-weight="bold" font-style="normal">
+        <keywords id="Sass Comment Flags" color="#b23200" font-weight="bold" font-style="normal">
           <string>@todo</string>
         </keywords>
       </state>
       
-      <state id="String" type="string" color="#760f15" font-weight="normal" font-style="normal">
+      <state id="Strings" type="string" color="#760f15" font-weight="normal" font-style="normal">
         <begin>
           <string>"</string>
         </begin>
@@ -53,7 +53,8 @@
         <state-link state="Interpolation" />
       </state>
 
-      <keywords id="Properties" color="#7b35b3" font-style="normal" useforautocomplete="yes">
+      <!-- old color: #7b35b3 -->
+      <keywords id="Properties" color="#88134f" font-style="normal" useforautocomplete="yes">
         <regex>(_background)(?:\s*)(?::)</regex>
         <regex>(_filter)(?:\s*)(?::)</regex>
         <regex>(filter)(?:\s*)(?::)</regex>
@@ -292,7 +293,8 @@
       </keywords>
 
       <!-- Attributes -->
-      <keywords id="Attributes" font-style="normal" color="#689d36" useforautocomplete="yes">
+      <!-- old color: #689d36 -->
+      <keywords id="Attributes" font-style="normal" color="#9b4400" useforautocomplete="yes">
         <regex>(?:\s+)(?i)(monospace)(s|;|,)</regex>
         <regex>(?:\s+)(?i)(sans-serif)(s|;|,)</regex>
         <regex>(?:\s+)(?i)(serif)(s|;|,)</regex>
@@ -643,23 +645,23 @@
         <regex>(?:\s+)(?i)(end)(s|;|,)</regex>
       </keywords>
       
-      <keywords id="Override" color="#ff0000" font-style="italic">
+      <keywords id="Overrides" color="#ff0000" font-style="italic">
         <regex>(?:\s+)(?i)(!important)</regex>
         <regex>(?:\s+)(?i)(!default)</regex>
       </keywords>
       
-      <keywords id="Variables" color="#6d9fc4" font-style="normal" useforautocomplete="no">
+      <keywords id="Variables" color="#3f7db0" font-style="normal" useforautocomplete="no">
         <regex>(\$[\d\w-]+)</regex>
       </keywords>
 
-      <state id="Interpolation" color="#3A1D72" font-weight="bold" font-style="normal">
+      <state id="Interpolation" color="#260573" font-weight="bold" font-style="normal">
         <begin>
           <string>#{</string>
         </begin>
         <end>
           <string>}</string>
         </end>
-        <keywords id="Interpolate" color="#6d9fc4" font-style="normal" useforautocomplete="no">
+        <keywords id="Interpolate" color="#3f7db0" font-style="normal" useforautocomplete="no">
           <regex>(\$[\d\w-]+)</regex>
         </keywords>
       </state>
@@ -672,7 +674,7 @@
         <regex>(#[\da-fA-F]{3,6})</regex>
       </keywords>
       
-      <keywords id="Directives" font-style="normal" font-weight="bold" color="#3A1D72">
+      <keywords id="Directives" font-style="normal" font-weight="bold" color="#260573">
         <!-- Webfonts -->
         <string>@font-face</string>
         <regex>(\@font\-face)</regex>
@@ -706,67 +708,67 @@
         <string>@function</string>
       </keywords>
 
-      <keywords id="Sass functions" font-style="normal" font-weight="normal" color="#3A1D72" useforautocomplete="yes">
+      <keywords id="Sass Functions" font-style="normal" font-weight="normal" color="#260573" useforautocomplete="yes">
         <!-- RGB Function -->
-        <regex>(?::\s+)(?i)(rgb)(?:\()</regex>
-        <regex>(?::\s+)(?i)(rgba)(?:\()</regex>
-        <regex>(?::\s+)(?i)(red)(?:\()</regex>
-        <regex>(?::\s+)(?i)(green)(?:\()</regex>
-        <regex>(?::\s+)(?i)(blue)(?:\()</regex>
-        <regex>(?::\s+)(?i)(mix)(?:\()</regex>
+        <regex>(rgb)(?:\()</regex>
+        <regex>(rgba)(?:\()</regex>
+        <regex>(red)(?:\()</regex>
+        <regex>(green)(?:\()</regex>
+        <regex>(blue)(?:\()</regex>
+        <regex>(mix)(?:\()</regex>
 
         <!-- HSL Functions -->
-        <regex>(?::\s+)(?i)(hsl)(?:\()</regex>
-        <regex>(?::\s+)(?i)(hsla)(?:\()</regex>
-        <regex>(?::\s+)(?i)(hue)(?:\()</regex>
-        <regex>(?::\s+)(?i)(saturation)(?:\()</regex>
-        <regex>(?::\s+)(?i)(lightness)(?:\()</regex>
-        <regex>(?::\s+)(?i)(adjust-hue)(?:\()</regex>
-        <regex>(?::\s+)(?i)(lighten)(?:\()</regex>
-        <regex>(?::\s+)(?i)(darken)(?:\()</regex>
-        <regex>(?::\s+)(?i)(saturate)(?:\()</regex>
-        <regex>(?::\s+)(?i)(desaturate)(?:\()</regex>
-        <regex>(?::\s+)(?i)(grayscale)(?:\()</regex>
-        <regex>(?::\s+)(?i)(complement)(?:\()</regex>
-        <regex>(?::\s+)(?i)(invert)(?:\()</regex>
+        <regex>(hsl)(?:\()</regex>
+        <regex>(hsla)(?:\()</regex>
+        <regex>(hue)(?:\()</regex>
+        <regex>(saturation)(?:\()</regex>
+        <regex>(lightness)(?:\()</regex>
+        <regex>(adjust-hue)(?:\()</regex>
+        <regex>(lighten)(?:\()</regex>
+        <regex>(darken)(?:\()</regex>
+        <regex>(saturate)(?:\()</regex>
+        <regex>(desaturate)(?:\()</regex>
+        <regex>(grayscale)(?:\()</regex>
+        <regex>(complement)(?:\()</regex>
+        <regex>(invert)(?:\()</regex>
 
         <!-- Opacity Functions -->
-        <regex>(?::\s+)(?i)(alpha)(?:\()</regex>
-        <regex>(?::\s+)(?i)(opacity)(?:\()</regex>
-        <regex>(?::\s+)(?i)(opacify)(?:\()</regex>
-        <regex>(?::\s+)(?i)(fade-in)(?:\()</regex>
-        <regex>(?::\s+)(?i)(transparentize)(?:\()</regex>
-        <regex>(?::\s+)(?i)(fade-out)(?:\()</regex>
+        <regex>(alpha)(?:\()</regex>
+        <regex>(opacity)(?:\()</regex>
+        <regex>(opacify)(?:\()</regex>
+        <regex>(fade-in)(?:\()</regex>
+        <regex>(transparentize)(?:\()</regex>
+        <regex>(fade-out)(?:\()</regex>
         
         <!-- Opacity Functions -->
-        <regex>(?::\s+)(?i)(adjust-color)(?:\()</regex>
-        <regex>(?::\s+)(?i)(scale-color)(?:\()</regex>
-        <regex>(?::\s+)(?i)(change-color)(?:\()</regex>
+        <regex>(adjust-color)(?:\()</regex>
+        <regex>(scale-color)(?:\()</regex>
+        <regex>(change-color)(?:\()</regex>
 
         <!-- String Functions -->
-        <regex>(?::\s+)(?i)(unqoute)(?:\()</regex>
-        <regex>(?::\s+)(?i)(quote)(?:\()</regex>
+        <regex>(unqoute)(?:\()</regex>
+        <regex>(quote)(?:\()</regex>
 
         <!-- Number Functions -->
-        <regex>(?::\s+)(?i)(percentage)(?:\()</regex>
-        <regex>(?::\s+)(?i)(round)(?:\()</regex>
-        <regex>(?::\s+)(?i)(ceil)(?:\()</regex>
-        <regex>(?::\s+)(?i)(floor)(?:\()</regex>
-        <regex>(?::\s+)(?i)(abs)(?:\()</regex>
+        <regex>(percentage)(?:\()</regex>
+        <regex>(round)(?:\()</regex>
+        <regex>(ceil)(?:\()</regex>
+        <regex>(floor)(?:\()</regex>
+        <regex>(abs)(?:\()</regex>
         
         <!-- List Functions -->
-        <regex>(?::\s+)(?i)(length)(?:\()</regex>
-        <regex>(?::\s+)(?i)(nth)(?:\()</regex>
-        <regex>(?::\s+)(?i)(join)(?:\()</regex>
+        <regex>(length)(?:\()</regex>
+        <regex>(nth)(?:\()</regex>
+        <regex>(join)(?:\()</regex>
 
         <!-- Introspect Functions -->
-        <regex>(?::\s+)(?i)(type_of)(?:\()</regex>
-        <regex>(?::\s+)(?i)(unit)(?:\()</regex>
-        <regex>(?::\s+)(?i)(unitless)(?:\()</regex>
-        <regex>(?::\s+)(?i)(comparable)(?:\()</regex>
+        <regex>(type_of)(?:\()</regex>
+        <regex>(unit)(?:\()</regex>
+        <regex>(unitless)(?:\()</regex>
+        <regex>(comparable)(?:\()</regex>
         
         <!-- Miscellaneous Functions -->
-        <regex>(?::\s+)(?i)(if)(?:\()</regex>
+        <regex>(if)(?:\()</regex>
       </keywords>
 
     </default>

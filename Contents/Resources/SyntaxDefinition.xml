@@ -16,22 +16,22 @@
       <state-link state="AutodocComment" mode="CSS" />
       <state-link state="SingleString" mode="CSS" />
       
-      <state id="CSS Comments" type="comment" color="#737373" font-weight="normal" font-style="normal">
+      <state id="CSS Comments" type="comment" color="#8c8c8c" font-weight="normal" font-style="italic">
         <begin><regex>/\*</regex></begin>
         <end><regex>\*/</regex></end>
         
         <!-- Highlight ad-hoc comment headings. Not part of any standard -->
-        <keywords id="CSS Comment Headings" color="#222" font-weight="bold">
+        <keywords id="CSS Comment Headings" color="#333" font-weight="bold" font-style="normal">
           <regex>(#{1,6} .*)([\r\n]|\*/)</regex>
         </keywords>
       </state>
       
-      <state id="Sass Comments" type="comment" color="#737373" font-weight="normal" font-style="normal">
+      <state id="Sass Comments" type="comment" color="#8c8c8c" font-weight="normal" font-style="italic">
         <begin><regex>//</regex></begin>
         <end><regex>[\n\r]</regex></end>
         
         <!-- Highlight ad-hoc comment headings. Not part of any standard -->
-        <keywords id="Sass Comment Headings" color="#222" font-weight="bold" font-style="normal">
+        <keywords id="Sass Comment Headings" color="#333" font-weight="bold" font-style="normal">
           <regex>(#{1,6} .*)[\r\n]</regex>
         </keywords>
         
@@ -81,6 +81,7 @@
         <regex>(border-bottom-width)(?:\s*)(?::)</regex>
         <regex>(border-left-width)(?:\s*)(?::)</regex>
         <regex>(bottom)(?:\s*)(?::)</regex>
+        <regex>(box-sizing)(?:\s*)(?::)</regex>
         <regex>(caption-side)(?:\s*)(?::)</regex>
         <regex>(clear)(?:\s*)(?::)</regex>
         <regex>(clip)(?:\s*)(?::)</regex>
@@ -209,6 +210,7 @@
         <regex>(-moz-border-radius-topright)(?:\s*)(?::)</regex>
         <regex>(-moz-border-right-colors)(?:\s*)(?::)</regex>
         <regex>(-moz-border-top-colors)(?:\s*)(?::)</regex>
+        <regex>(-moz-box-sizing)(?:\s*)(?::)</regex>
         <regex>(-moz-opacity)(?:\s*)(?::)</regex>
         <regex>(-moz-outline)(?:\s*)(?::)</regex>
         <regex>(-moz-outline-color)(?:\s*)(?::)</regex>

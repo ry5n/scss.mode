@@ -141,6 +141,7 @@
         <regex>(play-during)(?:\s*)(?::)</regex>
         <regex>(position)(?:\s*)(?::)</regex>
         <regex>(quotes)(?:\s*)(?::)</regex>
+        <regex>(resize)(?:\s*)(?::)</regex>
         <regex>(richness)(?:\s*)(?::)</regex>
         <regex>(right)(?:\s*)(?::)</regex>
         <regex>(size)(?:\s*)(?::)</regex>
@@ -155,6 +156,7 @@
         <regex>(text-decoration)(?:\s*)(?::)</regex>
         <regex>(text-decoration-color)(?:\s*)(?::)</regex>
         <regex>(text-indent)(?:\s*)(?::)</regex>
+        <regex>(text-rendering)(?:\s*)(?::)</regex>
         <regex>(text-shadow)(?:\s*)(?::)</regex>
         <regex>(text-transform)(?:\s*)(?::)</regex>
         <regex>(top)(?:\s*)(?::)</regex>
@@ -450,6 +452,7 @@
         <regex>(?!^)(?:\s)(no-open-quote)(\s|;|,)</regex>
         <regex>(?!^)(?:\s)(nowrap)(\s|;|,)</regex>
         <regex>(?!^)(?:\s)(open-quote)(\s|;|,)</regex>
+        <regex>(?!^)(?:\s)(optimizeLegibility)(\s|;|,)</regex>
         <regex>(?!^)(?:\s)(outside)(\s|;|,)</regex>
         <regex>(?!^)(?:\s)(overline)(\s|;|,)</regex>
         <regex>(?!^)(?:\s)(portrait)(\s|;|,)</regex>
@@ -709,6 +712,7 @@
         
         <!-- Function Directives -->
         <string>@function</string>
+        <string>@return</string>
       </keywords>
 
       <keywords id="Sass Functions" font-style="normal" font-weight="normal" color="#260573" useforautocomplete="yes">

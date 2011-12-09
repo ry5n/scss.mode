@@ -695,7 +695,7 @@
         <!-- Control Directives -->
         <string>@if</string>
         <string>@else</string>
-        <regex>(\@else[\sif]?)</regex>
+        <regex>(\@else(?:\sif)?)</regex>
         
         <string>@for</string>
         <regex>( from )</regex>

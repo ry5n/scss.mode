@@ -653,11 +653,14 @@
       
       <keywords id="Overrides" color="#ff0000" font-style="italic">
         <regex>(?:\s+)(?i)(!important)</regex>
-        <regex>(?:\s+)(?i)(!default)</regex>
       </keywords>
       
       <keywords id="Variables" color="#3f7db0" font-style="normal" useforautocomplete="no">
         <regex>(\$[\d\w-]+)</regex>
+      </keywords>
+      
+      <keywords id="Variable Defaults" color="#b4d078" font-style="normal">
+        <regex>(?:\s+)(?i)(!default)</regex>
       </keywords>
 
       <state id="Interpolation" color="#260573" font-weight="bold" font-style="normal">

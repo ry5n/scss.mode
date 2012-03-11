@@ -646,7 +646,7 @@
 				<regex>(\$[\d\w-]+)</regex>
 			</keywords>
 			
-			<keywords id="Variable Defaults" color="#b4d078" font-style="normal">
+			<keywords id="Variable Defaults" color="#01a57c" font-style="italic">
 				<regex>(?:\s+)(?i)(!default)</regex>
 			</keywords>
 

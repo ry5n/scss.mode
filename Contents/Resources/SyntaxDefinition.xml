@@ -15,16 +15,16 @@
 			<state-link state="AutodocComment" mode="CSS" />
 			<state-link state="SingleString" mode="CSS" />
 			
-			<state id="CSS Comments" type="comment" color="#8c8c8c" font-weight="normal" font-style="italic">
+			<state id="CSS Comments" type="comment" color="#8c8c8c" font-weight="normal" font-style="normal">
 				<begin><regex>/\*</regex></begin>
 				<end><regex>\*/</regex></end>
 			</state>
 			
-			<state id="Sass Comments" type="comment" color="#8c8c8c" font-weight="normal" font-style="italic">
+			<state id="Sass Comments" type="comment" color="#8c8c8c" font-weight="normal" font-style="normal">
 				<begin><regex>//</regex></begin>
 				<end><regex>[\n\r]</regex></end>
 				
-				<!-- Find @todos -->
+				<!-- For convenience, highlight @todo (not part of scss syntax) -->
 				<keywords id="Sass Comment Flags" color="#b23200" font-weight="bold" font-style="normal">
 					<string>@todo</string>
 				</keywords>
@@ -39,8 +39,16 @@
 				</end>
 				<state-link state="Interpolation" />
 			</state>
+			
+			<keywords id="General Selectors" color="#5f805c" font-style="normal" useforautocomplete="no">
+				<regex>^(?:\s*)([a-z\#\.\,\:\%\[\*&amp;&gt;](.)+)(?:{)</regex>
+			</keywords>
 
-			<!-- old color: #7b35b3 -->
+			<keywords id="Block Delimeters" color="#8c8c8c" font-style="normal" useforautocomplete="no">
+				<regex>^(?:\s*)(?:[a-z\#\.\,\:\%\[\*&amp;&gt;](?:.)+)({)</regex>
+				<regex>(})\n</regex>
+			</keywords>
+
 			<keywords id="Properties" color="#88134f" font-style="normal" useforautocomplete="yes">
 				<regex>(_background)(?:\s*)(?::)</regex>
 				<regex>(_filter)(?:\s*)(?::)</regex>
@@ -277,15 +285,14 @@
 				<regex>(-webkit-user-select)(?:\s*)(?::)</regex>
 				<regex>(-webkit-user-modify)(?:\s*)(?::)</regex>
 
-				<!-- Add a few styles that are new in the CSS mode -->
+				<!-- SCSS-specific nested properties http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#nested_properties -->
 				<regex>(family)(?:\s*)(?::)</regex>
 				<regex>(style)(?:\s*)(?::)</regex>
 				<regex>(weight)(?:\s*)(?::)</regex>
 			</keywords>
 
-			<!-- Attributes -->
-			<!-- old color: #689d36 -->
-			<keywords id="Attributes" font-style="normal" color="#9b4400" useforautocomplete="yes">
+			<!-- Value Keywords -->
+			<keywords id="Value Keywords" font-style="normal" color="#9b4400" useforautocomplete="yes">
 				<regex>(?!^)(?:\s)(monospace)(\s|;|,)</regex>
 				<regex>(?!^)(?:\s)(sans-serif)(\s|;|,)</regex>
 				<regex>(?!^)(?:\s)(serif)(\s|;|,)</regex>
@@ -646,7 +653,7 @@
 				<regex>(\$[\d\w-]+)</regex>
 			</keywords>
 			
-			<keywords id="Variable Defaults" color="#01a57c" font-style="italic">
+			<keywords id="Default Variable Modifier" color="#01a57c" font-style="italic">
 				<regex>(?:\s+)(?i)(!default)</regex>
 			</keywords>
 
@@ -662,27 +669,27 @@
 				</keywords>
 			</state>
 
-			<keywords id="Digits" color="#00f" font-style="normal" useforautocomplete="yes">
-				<regex>(?:\s|\(|-|\.)([\d]+(?:px|pt|em|ex|cm|in|mm|pc|rem|%)?)</regex>
+			<keywords id="Lengths" color="#00f" font-style="normal" useforautocomplete="yes">
+				<regex>(?:\s|\(|-|\.)([\d]+(?:em|ex|ch|rem|vw|vh|vmin|%|cm|mm|in|px|pt|pc|deg|grad|rad|turn|s|ms|dpi)?)</regex>
 			</keywords>
 
 			<keywords id="Colors" color="#760f15" font-style="normal" useforautocomplete="no">
 				<regex>(#[\da-fA-F]{3,6})</regex>
 			</keywords>
 			
-			<keywords id="Directives" font-style="normal" font-weight="bold" color="#260573">
-				<!-- Webfonts -->
+			<keywords id="Directives" font-style="normal" font-weight="bold" color="#260573" useforautocomplete="yes">
+				<!-- CSS At-Rules and Directives -->
+				<string>@charset</string>
 				<string>@font-face</string>
-				<regex>(\@font\-face)</regex>
-				
-				<!-- @-Rules and Directives -->
+				<regex>(\@page(\s\:left|right|first)?)</regex>
 				<regex>(\@import[\s\d\w\.]+)</regex>
-				<regex>(\@media[\s\d\w]+)</regex>
-				<string>@extend</string>
+				<regex>(\@media[\s\d\w]+)(?:and|or)?</regex>
+				
+				<!-- Sass Messages -->
 				<string>@debug</string>
 				<string>@warn</string>
 				
-				<!-- Control Directives -->
+				<!-- Sass Control Directives -->
 				<string>@if</string>
 				<string>@else</string>
 				<regex>(\@else(?:\sif)?)</regex>
@@ -699,6 +706,10 @@
 				<!-- Mixin Directives -->
 				<string>@mixin</string>
 				<string>@include</string>
+				<string>@content</string>
+
+				<!-- Extend Directives -->
+				<string>@extend</string>
 				
 				<!-- Function Directives -->
 				<string>@function</string>
@@ -757,9 +768,10 @@
 				<regex>(length)(?:\()</regex>
 				<regex>(nth)(?:\()</regex>
 				<regex>(join)(?:\()</regex>
+				<regex>(zip)(?:\()</regex>
 
-				<!-- Introspect Functions -->
-				<regex>(type_of)(?:\()</regex>
+				<!-- Introspection Functions -->
+				<regex>(type-of)(?:\()</regex>
 				<regex>(unit)(?:\()</regex>
 				<regex>(unitless)(?:\()</regex>
 				<regex>(comparable)(?:\()</regex>

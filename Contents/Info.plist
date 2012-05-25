@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>SEEMode.Scss</string>
+	<string>SEEMode.scss</string>
 	<key>CFBundleName</key>
-	<string>SCSS</string>
+	<string>scss</string>
     <key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>

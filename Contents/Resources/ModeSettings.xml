@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE syntax SYSTEM "settings.dtd">
 <settings>
-  <template>template.scss</template>
+	<template>template.scss</template>
   <recognition>
     <extension>scss</extension>
     <extension casesensitive="no">scss</extension>

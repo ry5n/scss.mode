@@ -31,6 +31,7 @@
 				<!-- <regex>( from )</regex>
 				<regex>( to|through )</regex> -->
 				<string>@each</string>
+				<!-- <string>( in )</string> -->
 				<string>@while</string>
 
 				<!-- Functions -->
@@ -122,6 +123,24 @@
 				<end><regex>(?:[\n\r])|.?(?=\?&gt;)</regex></end>
 			</state>
 
+			<keywords id="Selector" useforautocomplete="no" scope="style.selector">
+				<regex>(\.[a-zA-Z0-9-_]+)</regex>
+				<regex>(#[a-zA-Z0-9-_]+)</regex>
+				<regex>(?<![,\s]|^)([a-z]*\s*)(?=,)</regex>
+				<regex>[a-z]*\s+{</regex>
+			</keywords>
+
+			<!-- <keywords id="Selector" useforautocomplete="no" scope="style.selector">
+				<regex>([-_.#\[\]:^=*"a-zA-Z&amp;](?:[-_a-zA-Z0-9\[\]:^=~*"\s&amp;])*?)(?=(?:,\n)|\s*[{&gt;+~])</regex>
+				<regex>(.*?)(?=(?:,\n)|(?:\s*[{&gt;+~]))</regex>
+			</keywords> -->
+
+			<!--
+			<keywords id="Block Delimeters" color="#8c8c8c" font-style="normal" useforautocomplete="no">
+				<regex>^(?:\s*)(?:[a-z\#\.\,\:\%\[\*&amp;&gt;](?:.)+)({)</regex>
+				<regex>(})\n</regex>
+			</keywords> -->
+
 			<state id="Inside curly brackets" foldable="yes" indent="yes" scope="meta.block.curly">
 				<begin>
 					<string>{</string>
@@ -190,7 +209,7 @@
 				<state-link state="Inside curly brackets" />
 			</state>
 
-			<state id="Interpolation" useforautocomplete="no" scope="meta.important">
+			<state id="Interpolation" useforautocomplete="no" scope="meta.interpolation">
 				<begin>
 					<string>#{</string>
 				</begin>
@@ -198,19 +217,10 @@
 					<string>}</string>
 				</end>
 
-				<keywords id="Interpolate" useforautocomplete="no" scope="meta.important">
+				<keywords id="Interpolate" useforautocomplete="no" scope="meta.interpolation">
 					<regex>(\$[\d\w-]+)</regex>
 				</keywords>
 			</state>
-
-			<!-- <keywords id="General Selectors" color="#5f805c" font-style="normal" useforautocomplete="no">
-				<regex>^(?:\s*)([a-z\#\.\,\:\%\[\*&amp;&gt;](.)+)(?:{)</regex>
-			</keywords>
-
-			<keywords id="Block Delimeters" color="#8c8c8c" font-style="normal" useforautocomplete="no">
-				<regex>^(?:\s*)(?:[a-z\#\.\,\:\%\[\*&amp;&gt;](?:.)+)({)</regex>
-				<regex>(})\n</regex>
-			</keywords> -->
 		</default>
 	</states>
 </syntax>

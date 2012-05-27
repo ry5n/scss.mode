@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE syntax SYSTEM "syntax.dtd">
+<syntax>
+	<head>
+		<name>scss</name>
+		<charsintokens><![CDATA[_0987654321abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-@]]></charsintokens>
+		<charsincompletion><![CDATA[_0987654321abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-@]]></charsincompletion>
+	</head>
+	<states>
+		<default id="Base" usesymbolsfrommode="CSS" useautocompletefrommode="CSS" scope="meta.default">
+
+			<keywords id="Rules" casesensitive="no" useforautocomplete="yes" scope="style.at-rule">
+				<string>@import</string>
+				<string>@media</string>
+
+				<!-- Messages -->
+				<string>@debug</string>
+				<string>@warn</string>
+
+				<!-- Mixins and Extend -->
+				<string>@mixin</string>
+				<string>@include</string>
+				<string>@content</string>
+				<string>@extend</string>
+
+				<!-- Control Directives -->
+				<string>@if</string>
+				<string>@else if</string>
+				<string>@else</string>
+				<string>@for</string>
+				<!-- <regex>( from )</regex>
+				<regex>( to|through )</regex> -->
+				<string>@each</string>
+				<!-- <string>( in )</string> -->
+				<string>@while</string>
+
+				<!-- Functions -->
+				<string>@function</string>
+				<string>@return</string>
+			</keywords>
+
+			<keywords id="Variables" useforautocomplete="no" scope="language.variable.sass">
+				<regex>(\$[\d\w\-_]+)</regex>
+			</keywords>
+
+			<keywords id="!default" useforautocomplete="no" scope="meta.important.default">
+				<string>!default</string>
+			</keywords>
+
+			<keywords id="Sass functions" useforautocomplete="yes" casesensitive="no" scope="support.function.sass">
+				<!-- RGB Function -->
+				<regex>(?&lt;![\d\w])(rgb)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(rgba)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(red)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(green)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(blue)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(mix)\s*\(</regex>
+
+				<!-- HSL Functions -->
+				<regex>(?&lt;![\d\w])(hsl)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(hsla)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(hue)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(saturation)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(lightness)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(adjust-hue)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(lighten)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(darken)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(saturate)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(desaturate)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(grayscale)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(complement)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(invert)\s*\(</regex>
+
+				<!-- Opacity Functions -->
+				<regex>(?&lt;![\d\w])(alpha)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(opacity)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(opacify)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(fade-in)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(transparentize)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(fade-out)\s*\(</regex>
+
+				<!-- Color Functions -->
+				<regex>(?&lt;![\d\w])(adjust-color)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(scale-color)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(change-color)\s*\(</regex>
+
+				<!-- String Functions -->
+				<regex>(?&lt;![\d\w])(unqoute)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(quote)\s*\(</regex>
+
+				<!-- Number Functions -->
+				<regex>(?&lt;![\d\w])(percentage)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(round)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(ceil)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(floor)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(abs)\s*\(</regex>
+
+				<!-- List Functions -->
+				<regex>(?&lt;![\d\w])(length)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(nth)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(join)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(zip)\s*\(</regex>
+
+				<!-- Introspect Functions -->
+				<regex>(?&lt;![\d\w])(type[-_]of)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(unit)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(unitless)\s*\(</regex>
+				<regex>(?&lt;![\d\w])(comparable)\s*\(</regex>
+
+				<!-- Miscellaneous Functions -->
+				<regex>(?&lt;![\d\w])(if)\s*\(</regex>
+
+				<!-- Custom Functions -->
+				<regex>([a-zA-Z0-9_\-]+ *)\(</regex>
+			</keywords>
+
+			<keywords id="Sass mixins" useforautocomplete="yes" casesensitive="no" scope="support.mixin.sass">
+				<regex>(?&lt;=@include)\s+([\w_-]+)</regex>
+			</keywords>
+
+			<keywords id="Sass extend" useforautocomplete="yes" casesensitive="no" scope="support.extend.sass">
+				<regex>(?&lt;=@extend)\s+([.#%\[\*][a-zA-Z0-9\_\-\[\]\^\~\$\=\"]*)</regex>
+			</keywords>
+
+			<keywords id="Selector" useforautocomplete="no" scope="style.selector">
+				<regex>(?:^|[\s,&amp;])([.#%\[\*][a-zA-Z0-9\_\-\[\]\^\~\$\=\"]*)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])([a-z]+\[[^,\s]*\])[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(a)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(abbr)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(address)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(area)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(article)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(aside)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(audio)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(b)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(bdi)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(bdo)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(blockquote)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(body)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(br)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(button)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(canvas)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(caption)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(cite)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(code)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(col)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(colgroup)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(command)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(data)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(datalist)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(dd)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(del)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(details)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(dfn)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(dialog)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(div)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(del)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(dl)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(dt)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(em)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(embed)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(fieldset)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(figcaption)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(figure)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(footer)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(form)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(h1)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(h2)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(h3)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(h4)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(h5)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(h6)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(head)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(header)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(hgroup)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(hr)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(html)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(i)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(iframe)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(img)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(input)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(ins)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(kbd)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(keygen)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(label)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(legend)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(li)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(link)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(map)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(mark)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(menu)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(meta)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(meter)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(nav)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(noscript)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(object)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(ol)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(optgroup)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(option)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(output)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(p)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(param)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(pre)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(progress)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(q)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(rp)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(rt)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(ruby)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(s)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(samp)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(section)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(select)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(small)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(source)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(span)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(strong)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(sub)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(submit)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(summary)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(sup)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(table)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(tbody)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(td)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(textarea)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(tfoot)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(th)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(thead)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(time)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(title)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(tr)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(track)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(ul)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(var)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(video)[\s,:]</regex>
+				<regex>(?:^|[\s,&amp;])(wbr)[\s,:]</regex>
+			</keywords>
+
+			<keywords id="Parent Selector" useforautocomplete="no" scope="style.selector.parent">
+				<regex>(&amp;)</regex>
+			</keywords>
+
+			<keywords id="Pseudo Selector" useforautocomplete="no" scope="style.selector.pseudo">
+				<regex>(:{1,2}link)</regex>
+				<regex>(:{1,2}visited)</regex>
+				<regex>(:{1,2}hover)</regex>
+				<regex>(:{1,2}active)</regex>
+				<regex>(:{1,2}focus)</regex>
+				<regex>(:{1,2}before)</regex>
+				<regex>(:{1,2}after)</regex>
+			</keywords>
+
+			<state id="Attribute Selector" useforautocomplete="no" scope="style.selector.attr">
+				<begin><regex>(?:^|[\s,&amp;])(?:[a-zA-Z_\-]*)\[</regex></begin>
+				<end><regex>\]([a-zA-Z0-9\_\-\[\]\^\~\$\=\"]*)[\s,:]</regex></end>
+			</state>
+
+			<!-- Get comments and strings from the CSS mode -->
+			<state-link state="AutodocComment" mode="CSS" />
+			<state-link state="Comment" mode="CSS" />
+
+			<!-- top level strings -->
+			<state-link state="String" mode="CSS"/>
+			<state-link state="SingleString" mode="CSS"/>
+
+			<!-- gets us attribute state highlighting outside of {} -->
+			<!-- <state-link state="Attribute state" mode="CSS" /> -->
+
+			<state id="SingleComment" type="comment" scope="style.comment.block">
+				<begin><regex>(?://)</regex></begin>
+				<end><regex>(?:[\n\r])|.?(?=\?&gt;)</regex></end>
+			</state>
+
+			<state id="Sass Params" type="string" scope="meta.function.params.sass">
+				<begin><regex>\(</regex></begin>
+				<end><regex>\)</regex></end>
+
+				<import keywords-only="yes" />
+				<keywords id="CSS Digits" useforautocomplete="yes" scope="style.value.numeric">
+					<regex>(?&lt;![#\d\w-])(-?[\d]+[ \t]*(?:px|pt|em|ex|cm|in|mm|pc|s|ms|Hz|kHz|%|deg|rad|grad|turn|rem|ch|vw|vh|vmin|dpi)?)</regex>
+				</keywords>
+
+				<state-link state="String" />
+			</state>
+
+			<state id="Inside curly brackets" foldable="yes" indent="yes" scope="meta.block.curly">
+				<begin>
+					<regex>{</regex>
+					<autoend>}</autoend>
+				</begin>
+				<end>
+					<regex>}</regex>
+				</end>
+
+				<import keywords-only="yes" />
+				<import mode="CSS" state="Inside curly brackets" keywords-only="yes" />
+
+				<!-- Nested or 'namespaced' properties -->
+				<!-- <keywords id="Nested Properties" casesensitive="no" scope="style.property.name">
+					<string>family</string>
+					<string>style</string>
+					<string>weight</string>
+					<string>size</string>
+					<string>top</string>
+					<string>right</string>
+					<string>bottom</string>
+					<string>left</string>
+					<string>width</string>
+					<string>color</string>
+				</keywords> -->
+
+				<state-link state="Sass Params" />
+				<state-link state="Inside curly brackets" />
+				<state-link state="AutodocComment" mode="CSS" />
+				<state-link state="Comment" mode="CSS" />
+				<state-link state="SingleComment" />
+				<state-link state="SingleString" mode="CSS" />
+
+				<keywords id="Sass mixins" useforautocomplete="yes" casesensitive="no" scope="support.mixin.sass">
+					<regex>(?&lt;=@include)\s+([\w_-]+)</regex>
+				</keywords>
+
+				<keywords id="Sass extend" useforautocomplete="yes" casesensitive="no" scope="support.extend.sass">
+					<regex>(?&lt;=@extend)\s+([.#%\[\*][a-zA-Z0-9\_\-\[\]\^\~\$\=\"]*)</regex>
+				</keywords>
+
+				<state id="String" type="string" scope="style.value.string.double">
+					<begin>
+						<string>"</string>
+					</begin>
+					<end>
+						<regex>(((?&lt;!\\)(\\\\)*)|^)"</regex>
+					</end>
+
+					<keywords id="Variables" useforautocomplete="no" scope="language.variable.sass">
+						<regex>(\$[\d\w\-]+)</regex>
+					</keywords>
+
+					<state-link state="Interpolation" />
+				</state>
+
+				<keywords id="Property" scope="style.property">
+					<regex>(^\s*[a-z\-]+)(?=\:)</regex>
+					<regex>(?:^|\s*)(font)\s</regex>
+					<regex>(?:^|\s*)(border)\s</regex>
+					<regex>(?:^|\s*)(margin)\s</regex>
+					<regex>(?:^|\s*)(padding)\s</regex>
+				</keywords>
+
+				<state id="Attribute state" scope="meta.block.attribute">
+					<begin>
+						<regex>(?&lt;=:)\s</regex>
+					</begin>
+					<end>
+						<regex>(;|.(?=[}{])|[\n\r])</regex>
+					</end>
+
+					<import keywords-only="yes" />
+					<import mode="CSS" state="Attribute state" />
+
+					<keywords id="CSS Digits" useforautocomplete="yes" scope="style.value.numeric">
+						<regex>(?&lt;![#\d\w-])(-?[\d]+[ \t]*(?:px|pt|em|ex|cm|in|mm|pc|s|ms|Hz|kHz|%|deg|rad|grad|turn|rem|ch|vw|vh|vmin|dpi)?)</regex>
+					</keywords>
+				</state>
+			</state>
+
+			<state id="Interpolation" useforautocomplete="no" scope="meta.interpolation">
+				<begin>
+					<string>#{</string>
+				</begin>
+				<end>
+					<string>}</string>
+				</end>
+
+				<keywords id="Interpolate" useforautocomplete="no" scope="meta.interpolation.variable">
+					<regex>(\$[\d\w-]+)</regex>
+				</keywords>
+			</state>
+		</default>
+	</states>
+</syntax>

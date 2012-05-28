@@ -2571,11 +2571,11 @@ If that happens, use these values:
     color="#657B83" inverted-color="#839496" font-style="normal" font-weight="normal" />
   <style id="/scss/Attributes"
     color="#586E75" inverted-color="#93A1A1" font-style="normal" font-weight="normal" />
-  <style id="/scss/Selector"
+  <style id="/scss/Selectors"
     color="#859900" inverted-color="#859900" font-style="normal" font-weight="normal" />
-  <style id="/scss/Parent Selector"
+  <style id="/scss/Parent Selectors"
     color="#268bd2" inverted-color="#268bd2" font-style="normal" font-weight="bold" />
-  <style id="/scss/Pseudo Selector"
+  <style id="/scss/Pseudo Selectors"
     color="#dc322f" inverted-color="#dc322f" font-style="normal" font-weight="normal" />
   <style id="/scss/Override"
     color="#586E75" inverted-color="#93A1A1" font-style="normal" font-weight="normal" />

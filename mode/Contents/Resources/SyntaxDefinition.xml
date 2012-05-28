@@ -56,6 +56,10 @@
 				<string>@return</string>
 			</keywords>
 
+			<keywords id="Important Rules" casesensitive="no" useforautocomplete="yes" scope="style.at-rule.important">
+				<string>@mixin</string>
+			</keywords>
+
 			<keywords id="Selectors" useforautocomplete="yes" scope="style.selector">
 				<regex>(?&lt;=^|[\s,&amp;])(\*)[\s,:]</regex>
 				<regex>(?&lt;=^|[\s,&amp;])([.#%][a-zA-Z0-9\.\#\_\-]*)[\s,:]</regex>
@@ -281,6 +285,9 @@
 
 			<keywords id="Sass mixins" useforautocomplete="yes" casesensitive="no" scope="support.mixin.sass">
 				<regex>(?&lt;=@include)\s+([\w_-]+)</regex>
+			</keywords>
+
+			<keywords id="Sass mixin definitions" useforautocomplete="yes" casesensitive="no" scope="support.mixin.definition.sass">
 				<regex>(?&lt;=@mixin)\s+([\w_-]+)</regex>
 			</keywords>
 
@@ -319,13 +326,12 @@
 					<regex>}</regex>
 				</end>
 
-				<import keywords-only="yes" />
 				<import mode="CSS" state="Inside curly brackets" keywords-only="yes" />
+				<state-link mode="CSS" state="AutodocComment"  />
+				<state-link mode="CSS" state="Comment"  />
+				<state-link mode="CSS" state="SingleString"  />
 
-				<state-link state="AutodocComment" mode="CSS" />
-				<state-link state="Comment" mode="CSS" />
-				<state-link state="SingleString" mode="CSS" />
-
+				<import keywords-only="yes" />
 				<state-link state="String" />
 				<state-link state="Interpolation" />
 				<state-link state="SingleComment" />
@@ -354,8 +360,13 @@
 						<regex>(;|.(?=[}{])|[\n\r])</regex>
 					</end>
 
-					<import keywords-only="yes" />
 					<import mode="CSS" state="Attribute state" />
+
+					<import keywords-only="yes" />
+
+					<keywords id="Variables" useforautocomplete="no" scope="language.variable.sass">
+						<regex>(\$[\d\w\-]+)</regex>
+					</keywords>
 
 					<keywords id="!default" useforautocomplete="no" scope="meta.important.default">
 						<string>!default</string>

@@ -338,10 +338,6 @@
 					<regex>(?&lt;=@include)\s+([\w_-]+)</regex>
 				</keywords>
 
-				<keywords id="Sass extend" useforautocomplete="yes" casesensitive="no" scope="support.extend.sass">
-					<regex>(?&lt;=@extend)\s+([.#%\[\*][a-zA-Z0-9\_\-\[\]\^\~\$\=\"]*)</regex>
-				</keywords>
-
 				<keywords id="Property" scope="style.property">
 					<regex>(^\s*[a-z\-]+)(?=\:\s)</regex>
 					<regex>(?:^|\s*)(font)\s</regex>

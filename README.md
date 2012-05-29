@@ -15,9 +15,11 @@ Applications/Coda 2.app/Contents/Resources/Sass.mode
 - .scss
 
 ## Install
-1. git clone or download "scss-mode" folder to "~/Library/Application Support/Coda 2/Modes"
-2. Rename "scss-mode" → "scss.mode" and confirm
-3. Restart Coda 2
+1. git clone or download
+2. Copy the "mode" folder to "~/Library/Application Support/Coda 2/Modes"
+3. Rename "mode" to "scss.mode"
+4. Copy Solarized.sss to "~/Library/Application Support/Coda 2/Styles"
+5. Restart Coda 2, switch Stylesheet to Solarized in Prefs.
 
 ## References
 More about Mode Customization: http://www.codingmonkeys.de/subethaedit/mode.html

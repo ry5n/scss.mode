@@ -304,17 +304,18 @@
 				<begin><regex>(?://)</regex></begin>
 				<end><regex>(?:[\n\r])|.?(?=\?&gt;)</regex></end>
 			</state>
+			<state-link state="Comment" mode="CSS" />
 
 			<state id="Sass Params" type="string" scope="meta.function.params.sass">
 				<begin><regex>(?&lt;=\().</regex></begin>
 				<end><regex>\)</regex></end>
 
-				<import keywords-only="yes" />
-
+				<state-link state="SingleString" mode="CSS"/>
 				<state-link state="AutodocComment" mode="CSS" />
 				<state-link state="Comment" mode="CSS" />
+
+				<import keywords-only="yes" />
 				<state-link state="String" />
-				<state-link state="SingleString" mode="CSS"/>
 			</state>
 
 			<state id="Inside curly brackets" foldable="yes" indent="yes" scope="meta.block.curly">
